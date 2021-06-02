@@ -14,10 +14,10 @@ export default function HeroSlider() {
       showThumbs={false}
       infiniteLoop={true}
     >
-      <div>
+      <div className={classes.heroImg}>
         <img src={HeroImg} alt="hero" />
       </div>
-      <div>
+      <div className={classes.heroImg}>
         <img src={HeroImg2} alt="hero" />
       </div>
     </Carousel>

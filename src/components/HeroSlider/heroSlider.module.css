@@ -1,4 +1,8 @@
-.sliderWrapper img {
+.sliderWrapper {
+  margin: 70px auto 50px;
+}
+
+.heroImg img {
   height: 90vh !important;
   object-fit: cover;
 }
