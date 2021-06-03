@@ -3,6 +3,7 @@ import React, { useReducer } from 'react';
 
 const INIT_STATE = {
   products: [],
+  productDetail: null,
 };
 
 const reducer = (state = INIT_STATE, action) => {
@@ -11,6 +12,11 @@ const reducer = (state = INIT_STATE, action) => {
       return {
         ...state,
         products: action.payload,
+      };
+    case 'SET_PRODUCT_DETAIL':
+      return {
+        ...state,
+        productDetail: action.payload,
       };
     default:
       return state;
@@ -37,11 +43,22 @@ export default function StoreContextProvider(props) {
     }
   };
 
+  const fetchProductDetail = async (id) => {
+    const response = await axios.get(`${URL}/products/${id}`);
+    const productDetail = response.data;
+    dispatch({
+      type: 'SET_PRODUCT_DETAIL',
+      payload: productDetail,
+    });
+  };
+
   return (
     <storeContext.Provider
       value={{
         products: state.products,
+        productDetail: state.productDetail,
         fetchProducts,
+        fetchProductDetail,
       }}
     >
       {props.children}
