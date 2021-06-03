@@ -17,24 +17,21 @@ const useStyles = makeStyles({
   },
 });
 
-export default function ProductItem() {
+export default function ProductItem({ data }) {
   const classes = useStyles();
+
+  const { title, images, price, description } = data;
 
   return (
     <Card className={classes.root}>
       <CardActionArea>
-        <CardMedia
-          className={classes.media}
-          image="https://img.freepik.com/free-photo/blue-ocean-sky_113629-159.jpg?size=626&ext=jpg"
-          title="Contemplative Reptile"
-        />
+        <CardMedia className={classes.media} image={images[0]} title={title} />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-            Lizard
+            {title}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            Lizards are a widespread group of squamate reptiles, with over 6,000
-            species, ranging across all continents except Antarctica
+            {description}
           </Typography>
         </CardContent>
       </CardActionArea>
