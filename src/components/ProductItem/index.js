@@ -7,6 +7,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import Truncate from 'react-truncate';
 
 const useStyles = makeStyles({
   root: {
@@ -14,6 +15,10 @@ const useStyles = makeStyles({
   },
   media: {
     height: 140,
+  },
+  description: {
+    height: 100,
+    marginTop: 20,
   },
 });
 
@@ -28,10 +33,22 @@ export default function ProductItem({ data }) {
         <CardMedia className={classes.media} image={images[0]} title={title} />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-            {title}
+            <Truncate lines={2} ellipsis={'...'}>
+              {title}
+            </Truncate>
           </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            {description}
+
+          <Typography variant="h5">{price} руб</Typography>
+
+          <Typography
+            className={classes.description}
+            variant="body2"
+            color="textSecondary"
+            component="p"
+          >
+            <Truncate lines={3} ellipsis={'...'}>
+              {description}
+            </Truncate>
           </Typography>
         </CardContent>
       </CardActionArea>
@@ -40,7 +57,7 @@ export default function ProductItem({ data }) {
           Share
         </Button>
         <Button size="small" color="primary">
-          Learn More
+          Далее
         </Button>
       </CardActions>
     </Card>
