@@ -1,10 +1,13 @@
 import React from 'react';
 import Routes from './Routes';
-
-import 'swiper/swiper.min.css';
+import StoreContextProvider from './contexts/StoreContext';
 
 function App() {
-  return <Routes />;
+  return (
+    <StoreContextProvider>
+      <Routes />
+    </StoreContextProvider>
+  );
 }
 
 export default App;
