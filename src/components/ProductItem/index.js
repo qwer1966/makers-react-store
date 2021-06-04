@@ -59,7 +59,6 @@ export default function ProductItem({ data }) {
         <Button size="small" color="primary">
           Share
         </Button>
-
         <Button
           onClick={() => history.push(`/products/${id}`)}
           size="small"

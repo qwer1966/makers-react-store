@@ -18,6 +18,11 @@ const reducer = (state = INIT_STATE, action) => {
         ...state,
         productDetail: action.payload,
       };
+    case 'ADD_PRODUCT':
+      return {
+        ...state,
+        products: [...state.products, action.payload],
+      };
     default:
       return state;
   }
@@ -52,6 +57,18 @@ export default function StoreContextProvider(props) {
     });
   };
 
+  const createProduct = async (product) => {
+    const response = await axios.post(`${URL}/products`, product);
+    const createdProduct = response.data;
+
+    dispatch({
+      type: 'ADD_PRODUCT',
+      payload: createdProduct,
+    });
+
+    return createdProduct.id;
+  };
+
   return (
     <storeContext.Provider
       value={{
@@ -59,6 +76,7 @@ export default function StoreContextProvider(props) {
         productDetail: state.productDetail,
         fetchProducts,
         fetchProductDetail,
+        createProduct,
       }}
     >
       {props.children}

@@ -17,6 +17,9 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
+import AddIcon from '@material-ui/icons/Add';
+import { Fab } from '@material-ui/core';
+import { useHistory } from 'react-router';
 
 const drawerWidth = 240;
 
@@ -70,6 +73,11 @@ const useStyles = makeStyles((theme) => ({
     minHeight: '100vh',
     position: 'relative',
   },
+  addBtn: {
+    position: 'fixed',
+    top: '50%',
+    right: 15,
+  },
   contentShift: {
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.easeOut,
@@ -91,6 +99,8 @@ export default function MainLayout(props) {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+
+  const history = useHistory();
 
   return (
     <div className={classes.root}>
@@ -163,6 +173,14 @@ export default function MainLayout(props) {
         })}
       >
         {props.children}
+        <Fab
+          onClick={() => history.push('/products/create')}
+          className={classes.addBtn}
+          color="primary"
+          aria-label="add"
+        >
+          <AddIcon />
+        </Fab>
       </main>
     </div>
   );
