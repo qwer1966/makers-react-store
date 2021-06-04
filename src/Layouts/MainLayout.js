@@ -67,6 +67,8 @@ const useStyles = makeStyles((theme) => ({
       duration: theme.transitions.duration.leavingScreen,
     }),
     marginLeft: -drawerWidth,
+    minHeight: '100vh',
+    position: 'relative',
   },
   contentShift: {
     transition: theme.transitions.create('margin', {

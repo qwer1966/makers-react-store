@@ -4,17 +4,19 @@ import { Carousel } from 'react-responsive-carousel';
 import classes from '../productDetail.module.css';
 import 'react-responsive-carousel/lib/styles/carousel.css';
 
-export default function ProductSlider() {
+export default function ProductSlider({ images }) {
   return (
     <Carousel
       className={classes.sliderWrapper}
-      showArrows={true}
-      showThumbs={false}
+      showArrows={false}
+      showThumbs={true}
       infiniteLoop={true}
     >
-      {/* <div className={classes.heroImg}>
-        <img src={HeroImg2} alt="hero" />
-      </div> */}
+      {images.map((image, index) => (
+        <div key={index} className={classes.sliderImg}>
+          <img src={image} alt="hero" />
+        </div>
+      ))}
     </Carousel>
   );
 }

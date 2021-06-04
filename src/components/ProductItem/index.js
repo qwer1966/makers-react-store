@@ -8,6 +8,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Truncate from 'react-truncate';
+import { useHistory } from 'react-router';
 
 const useStyles = makeStyles({
   root: {
@@ -25,7 +26,9 @@ const useStyles = makeStyles({
 export default function ProductItem({ data }) {
   const classes = useStyles();
 
-  const { title, images, price, description } = data;
+  const { title, images, price, description, id } = data;
+
+  const history = useHistory();
 
   return (
     <Card className={classes.root}>
@@ -56,7 +59,12 @@ export default function ProductItem({ data }) {
         <Button size="small" color="primary">
           Share
         </Button>
-        <Button size="small" color="primary">
+
+        <Button
+          onClick={() => history.push(`/products/${id}`)}
+          size="small"
+          color="primary"
+        >
           Далее
         </Button>
       </CardActions>
