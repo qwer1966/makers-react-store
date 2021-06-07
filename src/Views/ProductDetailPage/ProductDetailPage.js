@@ -45,7 +45,7 @@ export default function ProductDetailPage() {
               <DeleteIcon />
             </IconButton>
 
-            <IconButton>
+            <IconButton onClick={() => history.push(`/products/${id}/update`)}>
               <EditIcon />
             </IconButton>
           </div>

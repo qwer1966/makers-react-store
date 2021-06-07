@@ -1,5 +1,5 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import MainLayout from '../../Layouts/MainLayout';
 import * as Yup from 'yup';
 import { Button, TextField, Typography } from '@material-ui/core';
@@ -7,7 +7,7 @@ import classes from './productUpdate.module.css';
 import TextError from '../../components/TextError';
 import { storeContext } from '../../contexts/StoreContext';
 import { notifySuccess } from '../../helpers/notifiers';
-import { useHistory } from 'react-router';
+import { useHistory, useParams } from 'react-router';
 
 export default function ProductUpdatePage() {
   const [initialValues, setInitialValues] = useState({
@@ -17,7 +17,23 @@ export default function ProductUpdatePage() {
     images: '',
   });
 
-  const {} = useContext(storeContext);
+  const { id } = useParams();
+
+  const { fetchProductDetail, productDetail, updateProduct } =
+    useContext(storeContext);
+
+  useEffect(() => {
+    fetchProductDetail(id);
+  }, []);
+
+  useEffect(() => {
+    if (productDetail) {
+      setInitialValues({
+        ...productDetail,
+        images: productDetail.images[0],
+      });
+    }
+  }, [productDetail]);
 
   const history = useHistory();
 
@@ -30,15 +46,14 @@ export default function ProductUpdatePage() {
     images: Yup.string().required('Обязательное поле!'),
   });
 
-  const onSubmit = (values, actions) => {
-    // createProduct({
-    //   ...values,
-    //   images: [values.images],
-    // }).then((id) => {
-    //   actions.resetForm();
-    //   notifySuccess('Продукт был создан!');
-    //   history.push(`/products/${id}`);
-    // });
+  const onSubmit = (values) => {
+    updateProduct(id, {
+      ...values,
+      images: [values.images],
+    }).then(() => {
+      notifySuccess('Продукт был изменен!');
+      history.push(`/products/${id}`);
+    });
   };
 
   return (
@@ -48,10 +63,11 @@ export default function ProductUpdatePage() {
           initialValues={initialValues}
           validationSchema={validationSchema}
           onSubmit={onSubmit}
+          enableReinitialize
         >
-          {({ values }) => (
+          {({}) => (
             <Form className={classes.form}>
-              <Typography variant="h4">Создание продукта</Typography>
+              <Typography variant="h4">Изменение продукта</Typography>
               <label>Название</label>
               <Field
                 className={classes.input}
@@ -92,7 +108,7 @@ export default function ProductUpdatePage() {
               <ErrorMessage component={TextError} name="images" />
 
               <Button type="submit" color="primary" variant="contained">
-                Создать
+                Изменить
               </Button>
             </Form>
           )}

@@ -30,6 +30,11 @@ const reducer = (state = INIT_STATE, action) => {
           (product) => product.id !== action.payload
         ),
       };
+    case 'CLEAR_PRODUCT':
+      return {
+        ...state,
+        productDetail: null,
+      };
     default:
       return state;
   }
@@ -53,6 +58,15 @@ export default function StoreContextProvider(props) {
     } catch (error) {
       console.log(error.message);
     }
+  };
+
+  const fetchSearchProducts = async (value) => {
+    const response = await axios.get(`${URL}/products/?q=${value}`);
+    const products = response.data;
+    dispatch({
+      type: 'SET_PRODUCTS',
+      payload: products,
+    });
   };
 
   const fetchProductDetail = async (id) => {
@@ -84,6 +98,13 @@ export default function StoreContextProvider(props) {
     });
   };
 
+  const updateProduct = async (id, data) => {
+    await axios.patch(`${URL}/products/${id}`, data);
+    dispatch({
+      type: 'CLEAR_PRODUCT',
+    });
+  };
+
   return (
     <storeContext.Provider
       value={{
@@ -93,6 +114,8 @@ export default function StoreContextProvider(props) {
         fetchProductDetail,
         createProduct,
         deleteProduct,
+        updateProduct,
+        fetchSearchProducts,
       }}
     >
       {props.children}

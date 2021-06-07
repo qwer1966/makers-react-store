@@ -20,6 +20,8 @@ import MailIcon from '@material-ui/icons/Mail';
 import AddIcon from '@material-ui/icons/Add';
 import { Fab } from '@material-ui/core';
 import { useHistory } from 'react-router';
+import { NavLink } from 'react-router-dom';
+import SearchBar from '../components/SearchBar';
 
 const drawerWidth = 240;
 
@@ -85,6 +87,16 @@ const useStyles = makeStyles((theme) => ({
     }),
     marginLeft: 0,
   },
+  navContent: {
+    width: '100%',
+    display: 'flex',
+    justifyContent: 'space-between',
+  },
+  logo: {
+    [theme.breakpoints.down('sm')]: {
+      display: 'none',
+    },
+  },
 }));
 
 export default function MainLayout(props) {
@@ -121,9 +133,20 @@ export default function MainLayout(props) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap>
-            Persistent drawer
-          </Typography>
+
+          <div className={classes.navContent}>
+            <NavLink
+              className={classes.logo}
+              style={{ textDecoration: 'none', color: '#fff' }}
+              to="/"
+            >
+              <Typography variant="h6" noWrap>
+                MyStore
+              </Typography>
+            </NavLink>
+
+            <SearchBar />
+          </div>
         </Toolbar>
       </AppBar>
       <Drawer
