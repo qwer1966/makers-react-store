@@ -1,5 +1,5 @@
 import React from 'react';
-import HeroSlider from '../../components/HeroSlider';
+import HeroSlider from '../../components/HeroSlider/';
 import ProductsList from '../../components/ProductsList';
 import MainLayout from '../../Layouts/MainLayout';
 
