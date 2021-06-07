@@ -4,14 +4,17 @@ import StoreContextProvider from './contexts/StoreContext';
 
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
+import { ConfirmProvider } from 'material-ui-confirm';
 
 toast.configure();
 
 function App() {
   return (
-    <StoreContextProvider>
-      <Routes />
-    </StoreContextProvider>
+    <ConfirmProvider>
+      <StoreContextProvider>
+        <Routes />
+      </StoreContextProvider>
+    </ConfirmProvider>
   );
 }
 
