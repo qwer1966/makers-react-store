@@ -12,16 +12,6 @@
       ]
     },
     {
-      "id": 2,
-      "title": "КРОССОВКИ ZX 2K BOOST FUTURESHELL",
-      "price": 12999,
-      "description": "Встречай будущее в этих кроссовках adidas ZX 2K Boost. Модель в стиле ретро-техно вдохновлена беговой обувью 80-х. Верх из сетки и термополиуретана представлен в новых цветах и отдает дань уважения инновационному духу ZX. Половина промежуточной подошвы Boost скрыта полупрозрачным пяточным каркасом для дополнительного комфорта и поддержки.",
-      "images": [
-        "https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy/7f0d83711a3a4b9c8436ace2001cf060_9366/Krossovki_ZX_2K_Boost_Futureshell_rozovyj_G57957_01_standard.jpg",
-        "https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy/3483026165f34633b0f4ace2001cd119_9366/Krossovki_ZX_2K_Boost_Futureshell_rozovyj_G57957_02_standard_hover.jpg"
-      ]
-    },
-    {
       "id": 3,
       "title": "КРОССОВКИ ДЛЯ БЕГА ULTRABOOST 21 PRIMEBLUE",
       "price": 15999,
@@ -59,15 +49,6 @@
         "https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy/14f3ba9b8b0e49e68c4bac3d00ebe218_9366/Krossovki_ZX_1K_Boost_chernyj_FY5649_01_standard.jpg"
       ],
       "id": 6
-    },
-    {
-      "title": "Test",
-      "price": "600",
-      "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-      "images": [
-        "https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy/23a1f3bf2a4c42ccacf4ac8401401fd1_9366/Krossovki_ZX_1K_Boost_oranzhevyj_FY3631_01_standard.jpg"
-      ],
-      "id": 7
     }
   ]
 }

@@ -8,9 +8,15 @@ import { ConfirmProvider } from 'material-ui-confirm';
 
 toast.configure();
 
+const defaultConfirmOptions = {
+  title: 'Вы уверены?',
+  confirmationText: 'Да',
+  cancellationText: 'Отмена',
+};
+
 function App() {
   return (
-    <ConfirmProvider>
+    <ConfirmProvider defaultOptions={defaultConfirmOptions}>
       <StoreContextProvider>
         <Routes />
       </StoreContextProvider>

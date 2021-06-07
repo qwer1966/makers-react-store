@@ -23,6 +23,13 @@ const reducer = (state = INIT_STATE, action) => {
         ...state,
         products: [...state.products, action.payload],
       };
+    case 'REMOVE_PRODUCT':
+      return {
+        ...state,
+        products: state.products.filter(
+          (product) => product.id !== action.payload
+        ),
+      };
     default:
       return state;
   }
@@ -69,6 +76,14 @@ export default function StoreContextProvider(props) {
     return createdProduct.id;
   };
 
+  const deleteProduct = async (id) => {
+    await axios.delete(`${URL}/products/${id}`);
+    dispatch({
+      type: 'REMOVE_PRODUCT',
+      payload: id,
+    });
+  };
+
   return (
     <storeContext.Provider
       value={{
@@ -77,6 +92,7 @@ export default function StoreContextProvider(props) {
         fetchProducts,
         fetchProductDetail,
         createProduct,
+        deleteProduct,
       }}
     >
       {props.children}
