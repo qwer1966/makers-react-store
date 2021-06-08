@@ -4,6 +4,10 @@ import { fade, makeStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
 import { useContext } from 'react';
 import { storeContext } from '../../contexts/StoreContext';
+import { fetchSearchProducts } from './api';
+import { Paper, Typography } from '@material-ui/core';
+import Truncate from 'react-truncate';
+import { useHistory } from 'react-router';
 
 const useStyles = makeStyles((theme) => ({
   search: {
@@ -45,21 +49,47 @@ const useStyles = makeStyles((theme) => ({
       },
     },
   },
+  searchList: {
+    width: '100%',
+    height: 300,
+    overflowY: 'scroll',
+    overflowX: 'hidden',
+    position: 'absolute',
+    top: 60,
+    padding: 20,
+  },
+  searchItem: {
+    marginBottom: 10,
+    padding: 10,
+    borderRadius: 15,
+    cursor: 'pointer',
+    '&:hover': {
+      backgroundColor: '#EBEEF0',
+    },
+  },
 }));
 
 export default function SearchBar() {
   const classes = useStyles();
 
   const [searchValue, setSearchValue] = useState('');
-  const { fetchSearchProducts, fetchProducts } = useContext(storeContext);
+  const [fetchedProducts, setFetchedProducts] = useState([]);
 
   const handleSearchChange = (e) => {
     setSearchValue(e.target.value);
   };
 
   useEffect(() => {
-    fetchSearchProducts(searchValue);
+    fetchSearchProducts(searchValue).then((products) =>
+      setFetchedProducts(products)
+    );
   }, [searchValue]);
+
+  const history = useHistory();
+
+  const handleSearchItemClick = (id) => {
+    history.push(`/products/${id}`);
+  };
 
   return (
     <div className={classes.search}>
@@ -76,6 +106,16 @@ export default function SearchBar() {
         }}
         inputProps={{ 'aria-label': 'search' }}
       />
+
+      {fetchedProducts.length ? (
+        <Paper className={classes.searchList}>
+          {fetchedProducts.map((product) => (
+            <Typography key={product.id} className={classes.searchItem}>
+              {product.title}
+            </Typography>
+          ))}
+        </Paper>
+      ) : null}
     </div>
   );
 }
