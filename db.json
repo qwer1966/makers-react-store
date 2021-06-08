@@ -47,6 +47,54 @@
         "https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy/14f3ba9b8b0e49e68c4bac3d00ebe218_9366/Krossovki_ZX_1K_Boost_chernyj_FY5649_01_standard.jpg"
       ],
       "id": 6
+    },
+    {
+      "id": 7,
+      "title": "КРОССОВКИ ДЛЯ БЕГА ULTRABOOST 21 PRIMEBLUE",
+      "price": 15999,
+      "description": "Понятие 'лучший' не статично. Когда мы впервые запустили adidas Ultraboost, это были лучшие беговые кроссовки в нашей истории. С каждой новой версией мы поднимаем планку. Теперь ты получаешь амортизацию, о которой даже не подозревал, и возврат энергии, которого ты всегда хотел. У этой модели поддерживающий верх adidas Primeknit+ и на 6% больше капсул Boost в подошве. Она заряжает каждый шаг дополнительной энергией благодаря системе Linear Energy Push, которая обеспечивает поддержку в передней и средней частях стопы.",
+      "images": [
+        "https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy/d7b701392efc440db995ac840136d86f_9366/Krossovki_dlya_bega_Ultraboost_21_Primeblue_sinij_FX7729_01_standard.jpg",
+        "https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy/ca46e3d28b404b3f9d2fac84013701ea_9366/Krossovki_dlya_bega_Ultraboost_21_Primeblue_sinij_FX7729_011_hover_standard.jpg",
+        "https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy/040276e8221849b7a886ac840136e465_9366/Krossovki_dlya_bega_Ultraboost_21_Primeblue_sinij_FX7729_02_standard.jpg"
+      ]
+    },
+    {
+      "id": 8,
+      "title": "КРОССОВКИ(Updated Product)",
+      "price": "20000",
+      "description": "Понятие 'лучший' не статично. Когда мы впервые запустили adidas Ultraboost, это были лучшие беговые кроссовки в нашей истории. С каждой новой версией мы поднимаем планку. Теперь ты получаешь амортизацию, о которой даже не подозревал, и возврат энергии, которого ты всегда хотел. У этой модели поддерживающий верх adidas Primeknit+ и на 6% больше капсул Boost в подошве. Она заряжает каждый шаг дополнительной энергией благодаря системе Linear Energy Push, которая обеспечивает поддержку в передней и средней частях стопы.",
+      "images": [
+        "https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy/d7b701392efc440db995ac840136d86f_9366/Krossovki_dlya_bega_Ultraboost_21_Primeblue_sinij_FX7729_01_standard.jpg"
+      ]
+    },
+    {
+      "id": 9,
+      "title": "КРОССОВКИ ZX 2K BOOST FUTURESHELL",
+      "price": 12999,
+      "description": "Встречай будущее в этих кроссовках adidas ZX 2K Boost. Модель в стиле ретро-техно вдохновлена беговой обувью 80-х. Верх из сетки и термополиуретана представлен в новых цветах и отдает дань уважения инновационному духу ZX. Половина промежуточной подошвы Boost скрыта полупрозрачным пяточным каркасом для дополнительного комфорта и поддержки.",
+      "images": [
+        "https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy/7f0d83711a3a4b9c8436ace2001cf060_9366/Krossovki_ZX_2K_Boost_Futureshell_rozovyj_G57957_01_standard.jpg",
+        "https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy/3483026165f34633b0f4ace2001cd119_9366/Krossovki_ZX_2K_Boost_Futureshell_rozovyj_G57957_02_standard_hover.jpg"
+      ]
+    },
+    {
+      "title": "Test",
+      "price": "600",
+      "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+      "images": [
+        "https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy/dd3da032976048bb95c7aafb003005a5_9366/Skalnye_tufli_Five_Ten_Hiangle_belyj_EE9033_01_standard.jpg"
+      ],
+      "id": 10
+    },
+    {
+      "title": "Test",
+      "price": "600",
+      "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+      "images": [
+        "https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy/14f3ba9b8b0e49e68c4bac3d00ebe218_9366/Krossovki_ZX_1K_Boost_chernyj_FY5649_01_standard.jpg"
+      ],
+      "id":11
     }
   ]
 }

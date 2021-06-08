@@ -195,6 +195,7 @@ export default function MainLayout(props) {
           [classes.contentShift]: open,
         })}
       >
+        <div style={{ height: 64 }}></div>
         {props.children}
         <Fab
           onClick={() => history.push('/products/create')}

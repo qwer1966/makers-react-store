@@ -1,23 +1,16 @@
-import React, { useContext, useEffect } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import ProductItem from '../ProductItem';
-import { storeContext } from '../../contexts/StoreContext';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
     flexGrow: 1,
   },
 }));
 
-export default function ProductsList() {
+export default function ProductsList({ products }) {
   const classes = useStyles();
-
-  const { products, fetchProducts } = useContext(storeContext);
-
-  useEffect(() => {
-    fetchProducts();
-  }, []);
 
   return (
     <div className={classes.root}>

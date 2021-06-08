@@ -4,6 +4,7 @@ import React, { useReducer } from 'react';
 const INIT_STATE = {
   products: [],
   productDetail: null,
+  total: 0,
 };
 
 const reducer = (state = INIT_STATE, action) => {
@@ -11,7 +12,8 @@ const reducer = (state = INIT_STATE, action) => {
     case 'SET_PRODUCTS':
       return {
         ...state,
-        products: action.payload,
+        products: action.payload.data,
+        total: action.payload.total,
       };
     case 'SET_PRODUCT_DETAIL':
       return {
@@ -46,14 +48,20 @@ const { REACT_APP_API_URL: URL } = process.env;
 export default function StoreContextProvider(props) {
   const [state, dispatch] = useReducer(reducer, INIT_STATE);
 
-  const fetchProducts = async () => {
+  const fetchProducts = async (page = 0) => {
     try {
-      const response = await axios.get(`${URL}/products`);
+      const response = await axios.get(
+        `${URL}/products?_start=${page * 4}&_end=${4 * (page + 1)}`
+      );
       const products = response.data;
+      const total = response.headers['x-total-count'];
 
       dispatch({
         type: 'SET_PRODUCTS',
-        payload: products,
+        payload: {
+          data: products,
+          total,
+        },
       });
     } catch (error) {
       console.log(error.message);
@@ -109,6 +117,7 @@ export default function StoreContextProvider(props) {
     <storeContext.Provider
       value={{
         products: state.products,
+        total: state.total,
         productDetail: state.productDetail,
         fetchProducts,
         fetchProductDetail,

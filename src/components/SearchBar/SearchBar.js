@@ -89,21 +89,32 @@ export default function SearchBar() {
     history.push(`/products/${id}`);
   };
 
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    setFetchedProducts([]);
+    setSearchValue('');
+    if (searchValue) {
+      history.push(`/products/search/${searchValue}`);
+    }
+  };
+
   return (
     <div className={classes.search}>
       <div className={classes.searchIcon}>
         <SearchIcon />
       </div>
-      <InputBase
-        onChange={handleSearchChange}
-        value={searchValue}
-        placeholder="Поиск…"
-        classes={{
-          root: classes.inputRoot,
-          input: classes.inputInput,
-        }}
-        inputProps={{ 'aria-label': 'search' }}
-      />
+      <form onSubmit={handleSearchSubmit}>
+        <InputBase
+          onChange={handleSearchChange}
+          value={searchValue}
+          placeholder="Поиск…"
+          classes={{
+            root: classes.inputRoot,
+            input: classes.inputInput,
+          }}
+          inputProps={{ 'aria-label': 'search' }}
+        />
+      </form>
 
       {fetchedProducts.length ? (
         <Paper className={classes.searchList}>
