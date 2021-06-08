@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react';
 import InputBase from '@material-ui/core/InputBase';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
-import { useContext } from 'react';
-import { storeContext } from '../../contexts/StoreContext';
 import { fetchSearchProducts } from './api';
 import { Paper, Typography } from '@material-ui/core';
 import Truncate from 'react-truncate';
@@ -110,7 +108,11 @@ export default function SearchBar() {
       {fetchedProducts.length ? (
         <Paper className={classes.searchList}>
           {fetchedProducts.map((product) => (
-            <Typography key={product.id} className={classes.searchItem}>
+            <Typography
+              onClick={() => handleSearchItemClick(product.id)}
+              key={product.id}
+              className={classes.searchItem}
+            >
               {product.title}
             </Typography>
           ))}

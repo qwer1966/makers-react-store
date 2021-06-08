@@ -21,7 +21,7 @@ export default function ProductDetailPage() {
 
   useEffect(() => {
     fetchProductDetail(id);
-  }, []);
+  }, [id]);
 
   const handleProductDelete = () => {
     confirm({
