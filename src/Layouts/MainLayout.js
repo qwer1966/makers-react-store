@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -15,13 +15,12 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
 import AddIcon from '@material-ui/icons/Add';
 import { Fab } from '@material-ui/core';
 import { useHistory } from 'react-router';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import SearchBar from '../components/SearchBar';
+import { storeContext } from '../contexts/StoreContext';
 
 const drawerWidth = 240;
 
@@ -97,12 +96,22 @@ const useStyles = makeStyles((theme) => ({
       display: 'none',
     },
   },
+  brandLogo: {
+    width: 56,
+    objectFit: 'contain',
+  },
 }));
 
 export default function MainLayout(props) {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+
+  const { brands, fetchBrands } = useContext(storeContext);
+
+  useEffect(() => {
+    fetchBrands();
+  }, []);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -169,24 +178,19 @@ export default function MainLayout(props) {
         </div>
         <Divider />
         <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
-        <Divider />
-        <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
+          {brands.map((brand) => (
+            <Link to={`/brand/${brand.id}`}>
+              <ListItem button key={brand.id}>
+                <ListItemText primary={brand.title} />
+                <ListItemIcon>
+                  <img
+                    className={classes.brandLogo}
+                    src={brand.logo}
+                    alt={`${brand.title} logo`}
+                  />
+                </ListItemIcon>
+              </ListItem>
+            </Link>
           ))}
         </List>
       </Drawer>

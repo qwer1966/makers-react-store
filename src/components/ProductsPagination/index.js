@@ -10,13 +10,17 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-export default function ProductsPagination({ total, page, setPage }) {
+export default function ProductsPagination({ count, page, setPage }) {
   const classes = useStyles();
+
+  // count - amount of pages in pagination
+  // page - currentPage
 
   return (
     <Pagination
+      // change current page to clicked page
       onChange={(_, _page) => setPage(_page)}
-      count={total}
+      count={count}
       page={page}
       className={classes.pagination}
       color="secondary"

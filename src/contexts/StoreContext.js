@@ -3,6 +3,8 @@ import React, { useReducer } from 'react';
 
 const INIT_STATE = {
   products: [],
+  brands: [],
+  brandDetail: null,
   productDetail: null,
   total: 0,
 };
@@ -36,6 +38,16 @@ const reducer = (state = INIT_STATE, action) => {
       return {
         ...state,
         productDetail: null,
+      };
+    case 'SET_BRANDS':
+      return {
+        ...state,
+        brands: action.payload,
+      };
+    case 'SET_BRAND_DETAIL':
+      return {
+        ...state,
+        brandDetail: action.payload,
       };
     default:
       return state;
@@ -71,9 +83,14 @@ export default function StoreContextProvider(props) {
   const fetchSearchProducts = async (value) => {
     const response = await axios.get(`${URL}/products/?q=${value}`);
     const products = response.data;
+    const total = response.headers['x-total-count'];
+
     dispatch({
       type: 'SET_PRODUCTS',
-      payload: products,
+      payload: {
+        data: products,
+        total,
+      },
     });
   };
 
@@ -113,18 +130,56 @@ export default function StoreContextProvider(props) {
     });
   };
 
+  const fetchBrands = async () => {
+    const response = await axios.get(`${URL}/brands`);
+    const brands = response.data;
+    dispatch({
+      type: 'SET_BRANDS',
+      payload: brands,
+    });
+  };
+
+  const fetchBrandProducts = async (brandId) => {
+    const response = await axios.get(`${URL}/products/?brand=${brandId}`);
+    const products = response.data;
+    const total = response.headers['x-total-count'];
+
+    dispatch({
+      type: 'SET_PRODUCTS',
+      payload: {
+        data: products,
+        total,
+      },
+    });
+  };
+
+  const fetchBrandDetail = async (brandId) => {
+    const response = await axios.get(`${URL}/brands/${brandId}`);
+    const brand = response.data;
+
+    dispatch({
+      type: 'SET_BRAND_DETAIL',
+      payload: brand,
+    });
+  };
+
   return (
     <storeContext.Provider
       value={{
         products: state.products,
         total: state.total,
         productDetail: state.productDetail,
+        brands: state.brands,
+        brandDetail: state.brandDetail,
         fetchProducts,
         fetchProductDetail,
         createProduct,
         deleteProduct,
         updateProduct,
         fetchSearchProducts,
+        fetchBrands,
+        fetchBrandProducts,
+        fetchBrandDetail,
       }}
     >
       {props.children}
