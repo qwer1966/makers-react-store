@@ -1,22 +1,24 @@
-import React from 'react';
-import { Pagination } from '@material-ui/lab';
-import { makeStyles } from '@material-ui/core';
+import React from "react";
+import { Pagination } from "@material-ui/lab";
+import { makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles(() => ({
   pagination: {
-    margin: '50px auto',
-    display: 'flex',
-    justifyContent: 'center',
+    margin: "50px auto",
+    display: "flex",
+    justifyContent: "center",
   },
 }));
 
-export default function ProductsPagination({ total, page, setPage }) {
+export default function ProductsPagination({ count, page, setPage }) {
   const classes = useStyles();
-
+  //count  зто колличество страниц,
+  // page текущая страница
   return (
+    // page  измененная страница
     <Pagination
       onChange={(_, _page) => setPage(_page)}
-      count={total}
+      count={count}
       page={page}
       className={classes.pagination}
       color="secondary"
